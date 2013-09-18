@@ -1,4 +1,5 @@
 config = require './config'
+url = require 'url'
 _ = require 'underscore'
 nodedelicious = require 'nodedelicious'
 
@@ -8,17 +9,17 @@ parseAll = () ->
 
 parseAllResponse = (data) ->
 	if data.posts
-		console.log data.posts.$
 		posts = data.posts.post
 
 		_.each posts, (link) ->
 			console.log link.$.href
 
-newLink = (link, desc) ->
-	nodedelicious.addPost link, desc, (err, data) ->
-		console.log data if !err
-		console.log err if err
+newLink = (link) ->
+	link = url.parse link
+
+	nodedelicious.addPost link.href, link.hostname, (err, data) ->
+		console.log "Done :)" if !err
 
 switch process.argv[2]
 	when "ls" then parseAll()
-	when "add" then newLink process.argv[3], process.argv[4]
+	when "add" then newLink process.argv[3]
