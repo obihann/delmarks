@@ -1,8 +1,9 @@
+config = require './config'
 _ = require 'underscore'
 nodedelicious = require 'nodedelicious'
 
 parseAll = () ->
-	nodedelicious.getAll "", "", (err, data) ->
+	nodedelicious.getAllPosts "", "", (err, data) ->
 		parseAllResponse data if  !err
 
 parseAllResponse = (data) ->

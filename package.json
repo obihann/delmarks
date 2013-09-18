@@ -11,14 +11,10 @@
     "url": "https://github.com/obihann/Delmarks.git"
   },
   "author": "Jeffrey Hann",
-  "license": "GPL v2",
-  "bugs": {
-    "url": "https://github.com/obihann/Delmarks/issues"
-  },
+  "license": "GPL v2"
   "dependencies": {
-    "nodedelicious": "0.0.1",
     "coffee-script": "~1.6.3",
-    "underscore": "~1.5.2",
-    "zepto": "0.0.4"
+    "underscore": "~1.5.2"
+    "nodedelicious": "https://github.com/obihann/NodeDelicious/archive/master.tar.gz"
   }
 }
