@@ -14,6 +14,11 @@ parseAllResponse = (data) ->
 		_.each posts, (link) ->
 			console.log link.$.href
 
-process.argv.forEach (val, index, array) ->
-  switch val
-  	when "ls" then parseAll()
+newLink = (link, desc) ->
+	nodedelicious.addPost link, desc, (err, data) ->
+		console.log data if !err
+		console.log err if err
+
+switch process.argv[2]
+	when "ls" then parseAll()
+	when "add" then newLink process.argv[3], process.argv[4]
