@@ -13,6 +13,8 @@ parseAllResponse = (data) ->
 
 		_.each posts, (link) ->
 			console.log link.$.href
+	else
+		console.log data
 
 newLink = (link) ->
 	link = url.parse link

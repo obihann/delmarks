@@ -1,5 +1,5 @@
 config = {
-	delicious_user = "username"
+	user = "username"
 	password = "password"
 }
 
