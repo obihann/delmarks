@@ -1,9 +1,21 @@
 #Delmarks
 A node based command line tool for managing your Del.iciou.us bookmarks
 
+##Usage
+
+List bookmarks:
+
+    ./delmarks ls
+    
+Add bookmark:
+
+    ./delmarks add http://github.com/
 
 ##ToDo
 * Make sign-in part of the script
+* Add export to HTML feature
+* Publish to NPM
+* Add help feature
 * Some other stuff...
 
 ##License
