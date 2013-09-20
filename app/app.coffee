@@ -1,11 +1,28 @@
-config = require './config'
+fs = require 'fs'
 url = require 'url'
 _ = require 'underscore'
-nodedelicious = require 'nodedelicious'
+
+loadDelicious = () ->
+	if !@user
+		data = fs.readFile './config.json', (err, data) ->
+			return false if err
+
+		try
+			@user = JSON.parse data
+		catch
+			return false
+
+	process.env.DELICIOUS_USER = @user.username
+	process.env.DELICIOUS_PASSWORD = @user.password
+
+	@nodedelicious = require 'nodedelicious'
 
 parseAll = () ->
-	nodedelicious.getAllPosts "", "", (err, data) ->
-		parseAllResponse data if  !err
+	if loadDelicious()
+		@nodedelicious.getAllPosts "", "", (err, data) ->
+			parseAllResponse data if  !err
+	else
+		console.log "Please connect first, try running 'delmarks connect username password"
 
 parseAllResponse = (data) ->
 	if data.posts
@@ -17,11 +34,28 @@ parseAllResponse = (data) ->
 		console.log data
 
 newLink = (link) ->
-	link = url.parse link
+	if loadDelicious()
+		link = url.parse link
 
-	nodedelicious.addPost link.href, link.hostname, (err, data) ->
-		console.log "Done :)" if !err
+		nodedelicious.addPost link.href, link.hostname, (err, data) ->
+			console.log "Done :)" if !err
+	else
+		console.log "Please connect first, try running 'delmarks connect username password"
+
+connect = (username, password) ->
+	@user = {
+		username: username
+		password: password
+	}
+
+	data = JSON.stringify user
+
+	fs.writeFile './config.json', data, (err) ->
+		console.log err.message if err
+
+	loadDelicious()
 
 switch process.argv[2]
 	when "ls" then parseAll()
 	when "add" then newLink process.argv[3]
+	when 'connect' then connect process.argv[3], process.argv[4]
