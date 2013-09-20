@@ -4,10 +4,8 @@ _ = require 'underscore'
 
 loadDelicious = () ->
 	if !@user
-		data = fs.readFile './config.json', (err, data) ->
-			return false if err
-
 		try
+			data = fs.readFileSync './config.json'
 			@user = JSON.parse data
 		catch
 			return false
@@ -16,6 +14,8 @@ loadDelicious = () ->
 	process.env.DELICIOUS_PASSWORD = @user.password
 
 	@nodedelicious = require 'nodedelicious'
+
+	true
 
 parseAll = () ->
 	if loadDelicious()
