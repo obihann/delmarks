@@ -1,12 +1,22 @@
 #Delmarks
 A node based command line tool for managing your [delicious](https://delicious.com/obihann) bookmarks.
 
+##Installation
+
+You can install us through npm
+
+    npm install delmarks
+
 ##Usage
+
+Connect your account:
+
+    ./delmarks connect USERNAME PASSWORD
 
 List bookmarks:
 
     ./delmarks ls
-    
+
 Add bookmark:
 
     ./delmarks add http://github.com/
