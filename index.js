@@ -1,2 +1,2 @@
-var coffeescript = require('coffee-script');
-require('./app/app.coffee');
+#! /usr/local/bin/node
+require('./app/app.js');

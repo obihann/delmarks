@@ -1,21 +1,23 @@
 {
   "name": "delmarks",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A node based command line tool for managing your Del.iciou.us bookmarks",
   "main": "app/app.coffee",
   "repository": {
     "type": "git",
-    "url": "https://github.com/obihann/Delmarks/archive/0.1.3-beta.tar.gz"
+    "url": "https://github.com/obihann/Delmarks/archive/0.1.4-beta.tar.gz"
   },
   "author": "Jeffrey Hann",
   "license": "GPL v2",
   "dependencies": {
     "coffee-script": "~1.6.3",
     "underscore": "~1.5.2",
-    "nodedelicious": "https://github.com/obihann/NodeDelicious/archive/0.0.2.tar.gz"
+    "nodedelicious": "https://github.com/obihann/NodeDelicious/archive/0.0.2.tar.gz",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt": "~0.4.1"
   },
   "preferGlobal": "true",
   "bin": {
-    "delmarks" : "delmarks"
+    "delmarks": "index.js"
   }
 }
