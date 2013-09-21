@@ -55,7 +55,15 @@ connect = (username, password) ->
 
 	loadDelicious()
 
+help = () ->
+	console.log "Delmarks: A node based command line tool for managing your Del.iciou.us bookmarks (0.1.5)"
+	console.log "-----------------------------------------------------------------------------------------"
+	console.log "connect USERNAME PASSWRD: Connect your account"
+	console.log "ls: List your bookmarks"
+	console.log "add http://google.ca: Add a new bookmark"
+
 switch process.argv[2]
 	when "ls" then parseAll()
 	when "add" then newLink process.argv[3]
 	when 'connect' then connect process.argv[3], process.argv[4]
+	else help()

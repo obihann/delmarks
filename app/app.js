@@ -1,5 +1,5 @@
 (function() {
-  var connect, fs, loadDelicious, newLink, parseAll, parseAllResponse, url, _;
+  var connect, fs, help, loadDelicious, newLink, parseAll, parseAllResponse, url, _;
 
   fs = require('fs');
 
@@ -75,6 +75,14 @@
     return loadDelicious();
   };
 
+  help = function() {
+    console.log("Delmarks: A node based command line tool for managing your Del.iciou.us bookmarks (0.1.5)");
+    console.log("-----------------------------------------------------------------------------------------");
+    console.log("connect USERNAME PASSWRD: Connect your account");
+    console.log("ls: List your bookmarks");
+    return console.log("add http://google.ca: Add a new bookmark");
+  };
+
   switch (process.argv[2]) {
     case "ls":
       parseAll();
@@ -84,6 +92,9 @@
       break;
     case 'connect':
       connect(process.argv[3], process.argv[4]);
+      break;
+    default:
+      help();
   }
 
 }).call(this);
