@@ -22,10 +22,11 @@ Add bookmark:
     ./delmarks add http://github.com/
 
 ##ToDo
-* Make sign-in part of the script
 * Add export to HTML feature
-* Publish to NPM
+* Add taggiing
+* Auto generate tags similar to delicious.com functionality
 * Add help feature
+* Restructure code
 * Some other stuff...
 
 ##Credits
