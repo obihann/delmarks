@@ -92,7 +92,8 @@
     console.log("-----------------------------------------------------------------------------------------");
     console.log("connect USERNAME PASSWRD: Connect your account");
     console.log("ls: List your bookmarks");
-    return console.log("add http://google.ca: Add a new bookmark");
+    console.log("add http://google.ca: Add a new bookmark");
+    return console.log("remove http://google.ca: Removes a bookmark");
   };
 
   switch (process.argv[2]) {

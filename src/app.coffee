@@ -69,6 +69,7 @@ help = () ->
 	console.log "connect USERNAME PASSWRD: Connect your account"
 	console.log "ls: List your bookmarks"
 	console.log "add http://google.ca: Add a new bookmark"
+	console.log "remove http://google.ca: Removes a bookmark"
 
 switch process.argv[2]
 	when "ls" then parseAll()
