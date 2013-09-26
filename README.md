@@ -21,6 +21,10 @@ Add bookmark:
 
     delmarks add http://github.com/
 
+Remove bookmark:
+
+    delmarks remove http://github.com/
+
 Help:
 
     delmarks -h
@@ -29,7 +33,6 @@ Help:
 * Add export to HTML/JSON/XML feature
 * Add taggiing
 * Auto generate tags similar to delicious.com functionality
-* Add delete
 * Add update description / note
 * Investigate securing conncetion with Delicious as currently very unsecure
 * Investigate securing the user config file that contains the username and password (JSON is great but unsecure for plain text passwords)
