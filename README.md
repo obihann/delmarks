@@ -11,22 +11,30 @@ You can install us through npm
 
 Connect your account:
 
-    ./delmarks connect USERNAME PASSWORD
+    delmarks connect USERNAME PASSWORD
 
 List bookmarks:
 
-    ./delmarks ls
+    delmarks ls
 
 Add bookmark:
 
-    ./delmarks add http://github.com/
+    delmarks add http://github.com/
+
+Help:
+
+    delmarks -h
 
 ##ToDo
-* Add export to HTML feature
+* Add export to HTML/JSON/XML feature
 * Add taggiing
 * Auto generate tags similar to delicious.com functionality
-* Add help feature
+* Add delete
+* Add update description / note
+* Investigate securing conncetion with Delicious as currently very unsecure
+* Investigate securing the user config file that contains the username and password (JSON is great but unsecure for plain text passwords)
 * Restructure code
+* Look into cool social features like shareing link to twitter or facebook
 * Some other stuff...
 
 ##Credits
