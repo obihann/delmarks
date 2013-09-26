@@ -1,5 +1,5 @@
 (function() {
-  var connect, fs, help, loadDelicious, newLink, parseAll, parseAllResponse, url, _;
+  var connect, deleteLink, fs, help, loadDelicious, newLink, parseAll, parseAllResponse, url, _;
 
   fs = require('fs');
 
@@ -47,6 +47,18 @@
     }
   };
 
+  deleteLink = function(link) {
+    if (loadDelicious()) {
+      return nodedelicious.deletePost(link, function(err, data) {
+        if (!err) {
+          return console.log("Gone :)");
+        }
+      });
+    } else {
+      return console.log("Please connect first, try running 'delmarks connect username password");
+    }
+  };
+
   newLink = function(link) {
     if (loadDelicious()) {
       link = url.parse(link);
@@ -86,6 +98,9 @@
   switch (process.argv[2]) {
     case "ls":
       parseAll();
+      break;
+    case "remove":
+      deleteLink(process.argv[3]);
       break;
     case "add":
       newLink(process.argv[3]);

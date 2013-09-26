@@ -33,6 +33,14 @@ parseAllResponse = (data) ->
 	else
 		console.log data
 
+deleteLink = (link) ->
+	if loadDelicious()
+
+		nodedelicious.deletePost link, (err, data) ->
+			console.log "Gone :)" if !err
+	else
+		console.log "Please connect first, try running 'delmarks connect username password"
+
 newLink = (link) ->
 	if loadDelicious()
 		link = url.parse link
@@ -64,6 +72,7 @@ help = () ->
 
 switch process.argv[2]
 	when "ls" then parseAll()
+	when "remove" then deleteLink process.argv[3]
 	when "add" then newLink process.argv[3]
 	when 'connect' then connect process.argv[3], process.argv[4]
 	else help()
