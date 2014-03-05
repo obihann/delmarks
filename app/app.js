@@ -1,5 +1,5 @@
 (function() {
-  var connect, deleteLink, fs, help, loadDelicious, newLink, parseAll, parseAllResponse, url, _;
+  var authError, connect, deleteLink, fs, help, loadDelicious, newLink, parseAll, parseAllResponse, title, upgrade, url, _;
 
   fs = require('fs');
 
@@ -11,7 +11,7 @@
     var data;
     if (!this.user) {
       try {
-        data = fs.readFileSync('./config.json');
+        data = fs.readFileSync(process.env.HOME + '/.config.dlmrk');
         this.user = JSON.parse(data);
       } catch (_error) {
         return false;
@@ -19,8 +19,17 @@
     }
     process.env.DELICIOUS_USER = this.user.username;
     process.env.DELICIOUS_PASSWORD = this.user.password;
-    this.nodedelicious = require('nodedelicious');
-    return true;
+    return this.nodedelicious = require('nodedelicious');
+  };
+
+  title = function() {
+    console.log("Delmarks: A node based command line tool for managing your Del.iciou.us bookmarks (1.0.0)");
+    return console.log("-----------------------------------------------------------------------------------------");
+  };
+
+  authError = function() {
+    title();
+    return console.log("Please connect first, try running 'delmarks connect <username> <password>' or if you have recently updated run 'delmarks upgrade'");
   };
 
   parseAll = function() {
@@ -31,7 +40,7 @@
         }
       });
     } else {
-      return console.log("Please connect first, try running 'delmarks connect username password");
+      return authError();
     }
   };
 
@@ -42,20 +51,21 @@
       return _.each(posts, function(link) {
         return console.log(link.$.href);
       });
-    } else {
-      return console.log(data);
     }
   };
 
   deleteLink = function(link) {
     if (loadDelicious()) {
       return nodedelicious.deletePost(link, function(err, data) {
+        title();
         if (!err) {
-          return console.log("Gone :)");
+          return console.log("the link (" + link + ") has been removed");
+        } else {
+          return console.log("an error has occured");
         }
       });
     } else {
-      return console.log("Please connect first, try running 'delmarks connect username password");
+      return authError();
     }
   };
 
@@ -63,12 +73,15 @@
     if (loadDelicious()) {
       link = url.parse(link);
       return nodedelicious.addPost(link.href, link.hostname, function(err, data) {
+        title();
         if (!err) {
-          return console.log("Done :)");
+          return console.log("the link (" + link + ") has been added");
+        } else {
+          return console.log("an error has occured");
         }
       });
     } else {
-      return console.log("Please connect first, try running 'delmarks connect username password");
+      return authError();
     }
   };
 
@@ -88,15 +101,30 @@
   };
 
   help = function() {
-    console.log("Delmarks: A node based command line tool for managing your Del.iciou.us bookmarks (0.1.5)");
-    console.log("-----------------------------------------------------------------------------------------");
+    title();
     console.log("connect USERNAME PASSWRD: Connect your account");
     console.log("ls: List your bookmarks");
     console.log("add http://google.ca: Add a new bookmark");
-    return console.log("remove http://google.ca: Removes a bookmark");
+    console.log("remove http://google.ca: Removes a bookmark");
+    return console.log("upgade: upgrades your account");
+  };
+
+  upgrade = function() {
+    title();
+    console.log("Attempting to upgrade user file...");
+    return fs.rename(process.env.HOME + '/config.json', process.env.HOME + '/.config.dlmrk', function(err) {
+      if (err) {
+        return console.log("User file could not be upgreade, please run 'delmarks connect'");
+      } else {
+        return console.log("Upgrade complete");
+      }
+    });
   };
 
   switch (process.argv[2]) {
+    case "upgrade":
+      upgrade();
+      break;
     case "ls":
       parseAll();
       break;
