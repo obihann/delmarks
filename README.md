@@ -5,7 +5,7 @@ A node based command line tool for managing your [delicious](https://delicious.c
 
 You can install us through npm
 
-    npm install delmarks
+    npm install delmarks -g
 
 ##Usage
 
