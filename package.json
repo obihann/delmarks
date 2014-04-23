@@ -1,11 +1,11 @@
 {
   "name": "delmarks",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A node based command line tool for managing your Del.iciou.us bookmarks",
   "main": "app/app.coffee",
   "repository": {
     "type": "git",
-    "url": "https://github.com/obihann/Delmarks/archive/1.2.0.tar.gz"
+    "url": "https://github.com/obihann/Delmarks.git"
   },
   "author": "Jeffrey Hann",
   "license": "GPL v2",
