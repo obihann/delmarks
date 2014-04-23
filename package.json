@@ -1,6 +1,6 @@
 {
   "name": "delmarks",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A node based command line tool for managing your Del.iciou.us bookmarks",
   "main": "app/app.coffee",
   "repository": {

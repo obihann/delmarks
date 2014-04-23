@@ -16,7 +16,7 @@ loadDelicious = () ->
 	@nodedelicious = require 'nodedelicious'
 
 title = () ->
-	console.log "Delmarks: A node based command line tool for managing your Del.iciou.us bookmarks (1.2.1)"
+	console.log "Delmarks: A node based command line tool for managing your Del.iciou.us bookmarks (1.2.3)"
 	console.log "-----------------------------------------------------------------------------------------"
 
 authError = () ->
