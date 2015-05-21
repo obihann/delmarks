@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/obihann/delmarks.svg?branch=master)](https://travis-ci.org/obihann/delmarks)
+[![NPM Package](https://badge.fury.io/js/delmarks.svg)](https://www.npmjs.com/package/delmarks)
 #Delmarks
 A node based command line tool for managing your [delicious](https://delicious.com/obihann) bookmarks.
 
