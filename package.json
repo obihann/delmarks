@@ -7,7 +7,8 @@
     "type": "git",
     "url": "https://github.com/obihann/Delmarks.git"
   },
-  "author": "Jeffrey Hann",
+  "author": "Jeffrey Hann <jeffhann@gmail.com> (http://jeffreyhann.ca)",
+  "contributors":"Kyle Mitchell <kyle@kemitchell.com> (http://kemitchell.com/)"
   "license": "GPL-2.0",
   "dependencies": {
     "coffee-script": "~1.6.3",
